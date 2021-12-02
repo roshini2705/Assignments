@@ -1,0 +1,171 @@
+1 collectiontypes :
+package day9;
+
+import java.util.LinkedList;
+
+public class CollectionTypes {
+	public static void main(String [] args) {
+		  LinkedList list = new LinkedList();
+		  list.add("one");
+		  list.add("two");
+		  list.add("three");
+		  System.out.println(list.poll());
+	}
+
+}
+
+2:currentdate example :
+package day9;
+
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+public class CurrentDateExample{    
+  public static void main(String[] args) {    
+   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("  dd/MM/yyyy ");  
+   LocalDateTime now = LocalDateTime.now();  
+   System.out.println(dtf.format(now));  
+  }    
+} 
+
+3:findage :
+class FindAge {
+static void findAge(int current_date, int current_month,
+int current_year, int birth_date,
+int birth_month, int birth_year)
+{
+int month[] = { 31, 28, 31, 30, 31, 30, 31,
+31, 30, 31, 30, 31 };
+
+
+if (birth_date > current_date) {
+current_month = current_month - 1;
+current_date = current_date + month[birth_month - 1];
+}
+
+
+
+if (birth_month > current_month) {
+current_year = current_year - 1;
+current_month = current_month + 12;
+}
+
+
+
+int calculated_date = current_date - birth_date;
+int calculated_month = current_month - birth_month;
+int calculated_year = current_year - birth_year;
+
+
+
+System.out.println("Present Age");
+System.out.println("Years: " + calculated_year +
+" Months: " + calculated_month + " Days: " +
+calculated_date);
+}
+public static void main(String[] args)
+{
+
+int current_date = 7;
+int current_month = 12;
+int current_year = 2017;
+
+
+int birth_date = 16;
+int birth_month = 12;
+int birth_year = 2009;
+
+findAge(current_date, current_month, current_year,
+birth_date, birth_month, birth_year);
+}
+}
+
+4:key:
+class key {
+
+
+
+
+public static void main(String[] args)
+{
+HashMap<String, Integer> map = new HashMap<>();
+
+
+
+
+map.put("vishal", 10);
+map.put("sachin", 30);
+map.put("vaibhav", 20);
+
+
+
+System.out.println("Size of map is:- "
++ map.size());
+
+
+
+// Printing elements in object of Map
+System.out.println(map);
+
+
+
+
+if (map.containsKey("vishal")) {
+
+
+
+Integer a = map.get("vishal");
+
+
+
+System.out.println("value for key"
++ " \"vishal\" is:- " + a);
+}
+}
+}
+
+5:test:
+package day9;
+
+import java.util.HashSet;
+
+public class Test {
+	public static void main(String [] args) {
+	Integer a = new Integer(4);
+	Integer b = new Integer(8);
+	Integer c = new Integer(4);
+	HashSet  hs= new HashSet();
+	hs.add(a);
+	hs.add(b);
+	hs.add(c);
+	System.out.println(hs);
+	}
+}
+
+6:testgenericconversion :
+package day9;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestGenericConversion {
+	public static void main(String [] args) {
+		List<String> list1 = new ArrayList<String>();
+		list1.add("one");
+		list1.add(1, null);
+		System.out.println(list1.get(0).length());
+	}
+}
+7:tester:
+package day9;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tester {
+	public static void main(String [] args) {
+		List<Object> list1 = new ArrayList<Object>();
+		List<Object> list2= list1;
+		list2.add(new Integer(12));
+		  System.out.println(list2.size());	
+	}
+}
