@@ -1,0 +1,110 @@
+package com.day8.javaexample;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class product {
+    int sr_no;
+    String name;
+    int qty;
+    int price;
+    @Override
+    public String toString() {
+        return "product{" +
+                "sr_no=" + sr_no +
+                ", name='" + name + '\'' +
+                ", qty=" + qty +
+                ", price=" + price +
+                '}';
+    }public product(int sr_no, String name, int qty, int price) {
+        this.sr_no = sr_no;
+        this.name = name;
+        this.qty = qty;
+        this.price = price;
+    }public int getSr_no() {
+        return sr_no;
+    }public void setSr_no(int sr_no) {
+        this.sr_no = sr_no;
+    }public String getName() {
+        return name;
+    }public void setName(String name) {
+        this.name = name;
+    }public int getQty() {
+        return qty;
+    }public void setQty(int qty) {
+        this.qty = qty;
+    }public int getPrice() {
+        return price;
+    }public void setPrice(int price) {
+        this.price = price;
+    }
+
+
+
+
+    static Scanner sc = new Scanner(System.in);
+    static List<product> plist = new ArrayList<>();
+    public void main(String[] args) {
+        product p1 = new product(1,"Saop",1,45);
+        product p2 = new product(2, "Shampoo", 1, 80);
+        product p3 = new product(3, "maggie", 1, 30);
+        plist.add(p1);
+        plist.add(p2);
+        plist.add(p3);
+        while (true) {
+            System.out.println("1.search 2.display 3.edit 4.remove 5.exit");
+            System.out.println("enter the choice");
+            int ch = sc.nextInt();switch (ch) {
+                case 1:
+                    search();
+                    break;
+                case 2:
+                    System.out.println(plist);
+                    break;
+                case 3:edit();
+                    break;
+                case 4:
+                    remove();
+                    break;
+                case 5:
+                    System.exit(0);
+            }}}
+    public static void search() {
+        product p;
+        System.out.println("enter the item to be searched");
+        String pro = sc.next();
+        for(int i=0;i<plist.size();i++){
+            p=plist.get(i);
+            if(pro.equals(p.name)){
+                System.out.println("item exists");
+            }
+            else System.out.printf("Item does not exist");
+        }}
+    public static void edit(){
+        product p;
+        System.out.println("enter the serial no to edit");
+        int s_no=sc.nextInt();
+        System.out.println("enter the price");
+        int price=sc.nextInt();
+        for(int i=0;i<plist.size();i++){
+            p=plist.get(i);
+            if(s_no==p.sr_no){
+                p.setPrice(price);
+            }
+        }
+    }
+    public static void remove(){
+        product p;
+        System.out.println("enter the serial no to remove");
+        int s_no=sc.nextInt();
+        for(int i=0;i<plist.size();i++){
+            p=plist.get(i);
+            if(s_no==p.sr_no){
+                plist.remove(p);
+            }
+        }
+    }
+}
+
+
